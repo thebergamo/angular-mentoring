@@ -1,0 +1,33 @@
+.list-item {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  height: 120px;
+  margin-bottom: 10px;
+}
+
+.list-item__info {
+  margin-right: 10px;
+  flex-grow: 0.75;
+}
+
+.list-item__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-item__datetime {
+  display: flex;
+}
+
+.list-item__datetime h5 {
+  margin-right: 10px;
+}
+
+.list-item__actions {
+  display: flex;
+  flex-grow: 0.25;
+  flex-direction: column;
+  justify-content: space-around;
+}
