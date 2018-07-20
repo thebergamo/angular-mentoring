@@ -1,0 +1,21 @@
+<section class="toolbox">
+  <form class="toolbox__search-container">
+    <fieldset>
+      <input
+        type="text"
+        placeholder="Search for courses"
+        [(ngModel)]="searchValue"
+        name="searchValue"
+      />
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="onSearchClick()"
+      >
+        Search
+      </button>
+    </fieldset>
+  </form>
+
+  <button type="button" class="btn btn-primary btn-sm">Add Course</button>
+</section>
