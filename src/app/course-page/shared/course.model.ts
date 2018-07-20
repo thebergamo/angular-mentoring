@@ -1,7 +1,7 @@
-import { Course } from '../interfaces/course';
+import { Course } from './course.interface';
 
 export default class CourseModel implements Course {
-  public id = '';
+  public id = 0;
   public title = '';
   public creation = new Date();
   public duration = 0;
