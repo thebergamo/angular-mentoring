@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../shared/course.interface';
 
+/* tslint:disable */
 const courses: Course[] = [
   {
     id: 1,
@@ -38,14 +39,15 @@ const courses: Course[] = [
     description: 'Mussum Ipsum, cacilds vidis litro abertis. Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis. Interagi no mé, cursus quis, vehicula ac nisi. Quem num gosta di mé, boa gentis num é.'
   }
 ];
+/* tslint:enable */
 
 @Component({
-  selector: 'course-list',
+  selector: 'app-course-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  courses: Course[];
+  courses: Course[] = [];
   onDeleteCourse(id: number) {
     console.log(`You're trying to delete course with id: ${id}`);
   }
@@ -54,9 +56,7 @@ export class ListComponent implements OnInit {
     console.log('Loading more itens...');
   }
 
-  constructor() {
-    this.courses = [];
-  }
+  constructor() {}
 
   ngOnInit() {
     this.courses = courses;

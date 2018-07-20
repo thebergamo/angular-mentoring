@@ -1,9 +1,9 @@
 <section class="list">
-  <course-list-item
+  <app-course-list-item
     *ngFor="let course of courses"
     [course]="course"
     (deleteCourse)="onDeleteCourse($event)"   
-  ></course-list-item>
+  ></app-course-list-item>
   <section class="list__load-more">
     <button
       type="button"
