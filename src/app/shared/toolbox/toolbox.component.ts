@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./toolbox.component.css']
 })
 export class ToolboxComponent implements OnInit {
+  searchValue: string = '';
+  onSearchClick() {
+    console.log(this.searchValue);
+  }
 
   constructor() { }
 

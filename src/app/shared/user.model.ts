@@ -1,4 +1,4 @@
-import { User } from '../interfaces/User';
+import { User } from './user.interface';
 
 export class UserModel implements User {
   public id = '';

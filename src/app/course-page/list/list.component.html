@@ -1,0 +1,16 @@
+<section class="list">
+  <course-list-item
+    *ngFor="let course of courses"
+    [course]="course"
+    (deleteCourse)="onDeleteCourse($event)"   
+  ></course-list-item>
+  <section class="list__load-more">
+    <button
+      type="button"
+      class="btn btn-outline-primary btn-l"
+      (click)="onLoadMoreClick()"
+    >
+      Load More Courses
+    </button>
+  </section>
+</section>
