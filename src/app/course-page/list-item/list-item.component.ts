@@ -8,10 +8,10 @@ import { Course } from '../shared/course.interface';
 })
 export class ListItemComponent implements OnInit {
   @Input()
-  course: Course;
+  public course: Course;
 
   @Output()
-  deleteCourse: EventEmitter<number> = new EventEmitter<number>();
+  public deleteCourse: EventEmitter<number> = new EventEmitter<number>();
 
   onDeleteClick(id: number) {
     this.deleteCourse.emit(id);
