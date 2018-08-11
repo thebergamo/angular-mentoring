@@ -4,6 +4,7 @@ export default class CourseModel implements Course {
   public id = 0;
   public title = '';
   public creation = new Date();
+  public topRated = false;
   public duration = 0;
   public description = '';
 
