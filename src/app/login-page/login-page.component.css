@@ -1,0 +1,22 @@
+.login-page {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-page form {
+  width: 600px;
+  height: 300px;
+  padding: 12px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-page .btn {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}

@@ -1,6 +1,13 @@
 <div class="app">
-  <app-header></app-header>
-  <app-breadcrumbs></app-breadcrumbs>
-  <app-course-page></app-course-page>
+  <app-header
+    [user]='loggedUser'
+    (logout)='logout($event)'
+  ></app-header>
+  <app-breadcrumbs *ngIf='isAuthenticated'></app-breadcrumbs>
+  <app-course-page *ngIf='isAuthenticated'></app-course-page>
+  <app-login-page
+    *ngIf='!isAuthenticated'
+    (login)='login($event)'
+  ></app-login-page>
   <app-footer></app-footer>
 </div>
