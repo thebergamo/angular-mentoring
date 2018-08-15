@@ -12,7 +12,6 @@ export class ToolboxComponent implements OnInit {
   public search: EventEmitter<string> = new EventEmitter<string>();
 
   onSearchClick() {
-    console.log('SEARCHING');
     this.search.emit(this.searchTerm);
   }
 

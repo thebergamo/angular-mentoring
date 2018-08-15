@@ -8,7 +8,21 @@
   </a>
 
   <section class="header__user">
-    <button type="button" class="btn btn-link header__username">@thebergamo</button>
-    <button type="button" class="btn btn-outline-light">Log off</button>
+    <button
+      *ngIf='!!user'
+      type="button"
+      class="btn btn-link header__username"
+    >
+      {{user?.firstName}}
+      {{user?.lastName}}
+    </button>
+    <button
+      *ngIf='!!user'
+      type="button"
+      class="btn btn-outline-light"
+      (click)='onLogoutClick()'
+    >
+      Log off
+    </button>
   </section>
 </nav>
