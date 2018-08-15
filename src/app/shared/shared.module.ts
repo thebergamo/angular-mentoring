@@ -6,6 +6,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { DurationPipe } from './duration.pipe';
+import { ToolboxComponent } from './toolbox/toolbox.component';
 
 @NgModule({
   imports: [
@@ -17,6 +19,8 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
     HeaderComponent,
     FooterComponent,
     BreadcrumbsComponent,
+    ToolboxComponent,
+    DurationPipe,
   ],
   exports: [
     CommonModule,
@@ -25,6 +29,8 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
     HeaderComponent,
     FooterComponent,
     BreadcrumbsComponent,
+    ToolboxComponent,
+    DurationPipe,
   ]
 })
 export class SharedModule { }

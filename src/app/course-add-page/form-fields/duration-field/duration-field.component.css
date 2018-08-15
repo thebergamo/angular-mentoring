@@ -1,0 +1,16 @@
+.duration-field {
+  display: flex;
+}
+
+.duration-field .form-control {
+   width: 30%;
+ }
+
+.duration-field p {
+  align-self: center;
+  margin-bottom: 0;
+  margin-left: 16px;
+}
+
+
+

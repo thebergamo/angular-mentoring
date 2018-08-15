@@ -1,12 +1,20 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-import { Course } from '../shared/course.interface';
+import { Course } from '../../shared/course.interface';
 
 @Component({
   selector: 'app-course-list-item',
   templateUrl: './list-item.component.html',
-  styleUrls: ['./list-item.component.css']
+  styleUrls: ['./list-item.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListItemComponent implements OnInit {
   public faStar = faStar;
