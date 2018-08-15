@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+
 import { Course } from '../shared/course.interface';
 
 @Component({
@@ -7,6 +9,8 @@ import { Course } from '../shared/course.interface';
   styleUrls: ['./list-item.component.css']
 })
 export class ListItemComponent implements OnInit {
+  public faStar = faStar;
+
   @Input()
   public course: Course;
 
@@ -21,5 +25,4 @@ export class ListItemComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

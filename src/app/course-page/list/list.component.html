@@ -1,10 +1,19 @@
 <section class="list">
   <app-course-list-item
-    *ngFor="let course of courses"
+    *ngFor="let course of (courses | orderBy)"
     [course]="course"
-    (deleteCourse)="onDeleteCourse($event)"   
+    (deleteCourse)="onDeleteCourse($event)"
   ></app-course-list-item>
-  <section class="list__load-more">
+  <section
+    class="list__empty"
+    *ngIf="courses.length === 0"
+  >
+    NO DATA FELL FREE TO ADD NEW COURSE
+  </section>
+  <section
+    class="list__load-more"
+    *ngIf="courses.length !== 0"
+  >
     <button
       type="button"
       class="btn btn-outline-primary btn-l list__btn-load-more"

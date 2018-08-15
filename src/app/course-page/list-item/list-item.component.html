@@ -1,9 +1,16 @@
-<div class="card list-item">
+<div
+  [appCourseFreshness]='course?.creation'
+  [ngClass]="{'list-item--top-rated': course?.topRated }"
+  class="card list-item"
+>
   <section class="list-item__info">
     <span class="list-item__title">
-      <h4 class="card-title">{{course?.title}}</h4>
+      <h4 class="card-title">
+        {{course?.title | uppercase}}
+        <fa-icon *ngIf='course?.topRated' [icon]="faStar"></fa-icon>
+      </h4>
       <span class="list-item__datetime">
-        <h5>{{course?.duration}}min</h5>
+        <h5>{{course?.duration | duration}}</h5>
         <h5>{{course?.creation | date: 'MM.dd.yyyy' }}</h5>
       </span>
     </span>

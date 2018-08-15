@@ -6,6 +6,18 @@
   margin-bottom: 10px;
 }
 
+.list-item--fresh {
+  border-color: var(--color-fresh);
+}
+
+.list-item--upcoming {
+  border-color: var(--color-upcoming);
+}
+
+.list-item--top-rated {
+  background-color: rgba(255, 215, 0, 0.3);
+}
+
 .list-item__info {
   margin-right: 10px;
   flex-grow: 0.75;
