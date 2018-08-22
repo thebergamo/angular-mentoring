@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../user.interface';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,19 +8,16 @@ import { User } from '../user.interface';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Input()
   public user: User;
 
-  @Output()
-  private logout: EventEmitter<void> = new EventEmitter<void>();
-
   onLogoutClick(): void {
-    this.logout.emit();
+    this.authService.logout();
   }
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.user = this.authService.getUserInfo();
   }
 
 }

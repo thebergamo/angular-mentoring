@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -9,27 +10,13 @@ export class LoginPageComponent implements OnInit {
   public email = '';
   public password = '';
 
-  @Output()
-  private login: EventEmitter<object> = new EventEmitter<object>();
-
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  setEmail(email: string) {
-    this.email = email;
-  }
-
-  setPassword(password: string) {
-    this.password = password;
-  }
-
   onLoginClick(): void {
-    const authObject = { email: this.email, password: this.password };
-    console.log(authObject);
-
-    this.login.emit(authObject);
+    this.authService.login(this.email, this.password);
   }
 
 }

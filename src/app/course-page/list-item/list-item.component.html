@@ -19,7 +19,13 @@
   </section>
 
   <section class="list-item__actions">
-    <button type="button" class="btn btn-outline-info btn-sm">Edit</button>
+    <button
+      type="button"
+      class="btn btn-outline-info btn-sm"
+      [routerLink]="[course.id]"
+    >
+      Edit
+    </button>
     <button
       type="button"
       class="btn btn-outline-danger btn-sm"
