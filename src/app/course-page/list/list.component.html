@@ -1,18 +1,23 @@
 <section class="list">
+  <app-toolbox
+    [query]="query"
+    (search)="onSearchCourse($event)"
+  ></app-toolbox>
+
   <app-course-list-item
-    *ngFor="let course of (courses | orderBy)"
+    *ngFor="let course of (filteredCourses | orderBy)"
     [course]="course"
     (deleteCourse)="onDeleteCourse($event)"
   ></app-course-list-item>
   <section
     class="list__empty"
-    *ngIf="courses.length === 0"
+    *ngIf="filteredCourses.length === 0"
   >
     NO DATA FELL FREE TO ADD NEW COURSE
   </section>
   <section
     class="list__load-more"
-    *ngIf="courses.length !== 0"
+    *ngIf="filteredCourses.length !== 0"
   >
     <button
       type="button"

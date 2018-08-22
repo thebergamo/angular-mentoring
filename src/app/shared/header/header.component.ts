@@ -8,7 +8,7 @@ import { User } from '../user.interface';
 })
 export class HeaderComponent implements OnInit {
   @Input()
-  private user: User;
+  public user: User;
 
   @Output()
   private logout: EventEmitter<void> = new EventEmitter<void>();

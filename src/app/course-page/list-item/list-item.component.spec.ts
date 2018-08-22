@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { ListItemComponent } from './list-item.component';
-import { Course } from '../shared/course.interface';
+import { Course } from '../../shared/course.interface';
 import { By } from '@angular/platform-browser';
 
 describe('ListItemComponent', () => {

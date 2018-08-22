@@ -1,0 +1,12 @@
+<span class="duration-field">
+  <input
+    type="number"
+    class="form-control"
+    [(ngModel)]="value"
+    [id]="id"
+    [ngModelOptions]="ngModelOptions"
+  />
+
+  <p>{{value | duration}}</p>
+
+</span>

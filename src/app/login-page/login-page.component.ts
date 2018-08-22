@@ -6,8 +6,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
-  private email = '';
-  private password = '';
+  public email = '';
+  public password = '';
 
   @Output()
   private login: EventEmitter<object> = new EventEmitter<object>();

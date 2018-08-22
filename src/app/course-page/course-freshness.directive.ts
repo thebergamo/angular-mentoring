@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appCourseFreshness]'
@@ -10,23 +10,21 @@ export class CourseFreshnessDirective implements OnInit {
   private creationDate: Date;
   /* tslint:enable no-input-rename */
 
-  constructor(private el: ElementRef) {}
+  constructor(private renderer: Renderer2, private el: ElementRef) {}
 
   ngOnInit() {
     this.setFreshness();
   }
 
   private setFreshness() {
-    // creationDate < now && creationDate >= now - 14 days === FRESH (green)
-    // creationDate > now === UPCOMING (blue)
     const creationDate = moment(this.creationDate);
     if (
       creationDate.isBefore() &&
       creationDate.isSameOrAfter(moment().subtract(14, 'days'))
     ) {
-      this.el.nativeElement.classList.add('list-item--fresh');
+      this.renderer.addClass(this.el.nativeElement, 'list-item--fresh');
     } else if (creationDate.isAfter()) {
-      this.el.nativeElement.classList.add('list-item--upcoming');
+      this.renderer.addClass(this.el.nativeElement, 'list-item--upcoming');
     }
   }
 

@@ -1,0 +1,56 @@
+<section class="course-page container">
+  <h3>Add new Course</h3>
+  <div class="dropdown-divider"></div>
+  <form class="course-form">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        [(ngModel)]="course.title"
+        [ngModelOptions]="{standalone: true}"
+      />
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        class="form-control"
+        rows="5"
+        id="description"
+        [(ngModel)]="course.description"
+        [ngModelOptions]="{standalone: true}"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="date">Date</label>
+      <app-date-field
+        id="date"
+        [(ngModel)]="course.creation"
+        [ngModelOptions]="{standalone: true}"
+      ></app-date-field>
+    </div>
+    <div class="form-group">
+      <label for="duration">Duration</label>
+      <app-duration-field
+        id="duration"
+        [(ngModel)]="course.duration"
+        [ngModelOptions]="{standalone: true}"
+      ></app-duration-field>
+    </div>
+    <div class="form-group">
+      <label for="authors">Authors</label>
+      <app-authors-field
+        id="authors"
+        [(ngModel)]="authors"
+        [ngModelOptions]="{standalone: true}"
+      ></app-authors-field>
+    </div>
+
+    <section class="course-form--actions">
+      <button (click)="onSaveClick()" class="btn btn-primary">Save</button>
+      <button (click)="onCancelClick()" class="btn btn-outline-primary">Cancel</button>
+    </section>
+  </form>
+
+</section>

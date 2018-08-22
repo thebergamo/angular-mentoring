@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { User } from './shared/user.interface';
-import { EmailValidator } from '../../node_modules/@angular/forms';
+import { EmailValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +10,9 @@ import { EmailValidator } from '../../node_modules/@angular/forms';
 })
 export class AppComponent implements OnInit {
   title = 'Ng Courses';
-  private isAuthenticated = false;
-  private loggedUser: User;
+  public isAuthenticated = false;
+  public loggedUser: User;
+  public newCourse = true;
 
   constructor(private authService: AuthService) {}
 
@@ -26,7 +27,7 @@ export class AppComponent implements OnInit {
     this.isAuthenticated = this.authService.isAuthenticated();
   }
 
-  logout() {
+  logout($event) {
     this.authService.logout();
     this.isAuthenticated = false;
     this.loggedUser = null;
