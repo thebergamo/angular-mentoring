@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 import { COURSES } from './courses.mock';
 import { Course } from './course.interface';
@@ -14,10 +15,12 @@ export class CourseService {
     return this.courses;
   }
 
-  getById(id: number): Course {
+  getById(id: number): Observable<Course> {
     const courses: Course[] = this.getList();
 
-    return courses.find((course: Course) => course.id === id);
+    const course: Course = courses.find((c: Course) => c.id === id);
+
+    return of(course);
   }
 
   create(course: Course): void {

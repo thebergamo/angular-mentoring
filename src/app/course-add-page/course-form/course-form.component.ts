@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Course } from '../../shared/course.interface';
-import CourseModel from '../../shared/course.model';
 
 @Component({
   selector: 'app-course-form',
@@ -8,21 +7,30 @@ import CourseModel from '../../shared/course.model';
   styleUrls: ['./course-form.component.css']
 })
 export class CourseFormComponent implements OnInit {
+  @Input()
   public course: Course;
+  @Input()
+  public editName: string;
+
   public authors: string;
+
+  @Output()
+  public saveCourse: EventEmitter<Course> = new EventEmitter<Course>();
+
+  @Output()
+  public cancel: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit() {
-    this.course = new CourseModel({});
   }
 
-  onSaveClick() {
-    console.log('You are saving!');
+  onSaveClick(): void {
+    this.saveCourse.emit(this.course);
   }
 
   onCancelClick() {
-    console.log('You are canceling!');
+    this.cancel.emit();
   }
 
 }

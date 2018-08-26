@@ -10,10 +10,12 @@ import { CoursePageComponent } from './course-page.component';
 import { CourseFreshnessDirective } from './course-freshness.directive';
 import { OrderByPipe } from './order-by.pipe';
 import { FilterPipe } from './filter.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     SharedModule,
+    RouterModule,
   ],
   declarations: [
     ListComponent,

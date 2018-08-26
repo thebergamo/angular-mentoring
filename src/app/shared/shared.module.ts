@@ -8,12 +8,14 @@ import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { DurationPipe } from './duration.pipe';
 import { ToolboxComponent } from './toolbox/toolbox.component';
+import { RouterModule } from '../../../node_modules/@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     FontAwesomeModule,
+    RouterModule,
   ],
   declarations: [
     HeaderComponent,

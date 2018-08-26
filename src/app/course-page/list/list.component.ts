@@ -4,6 +4,7 @@ import { Course } from '../../shared/course.interface';
 import { CourseService } from '../../shared/course.service';
 
 import { FilterPipe } from '../filter.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course-list',
@@ -46,7 +47,10 @@ export class ListComponent implements OnInit {
     console.log('Loading more itens...');
   }
 
-  constructor(private courseService: CourseService) {}
+  constructor(
+    private courseService: CourseService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getCourses();
