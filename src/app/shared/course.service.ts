@@ -20,7 +20,6 @@ export class CourseService {
 
     const course: Course = courses.find((c: Course) => c.id === id);
 
-    console.log({ course });
     return of(course);
   }
 
