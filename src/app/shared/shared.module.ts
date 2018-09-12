@@ -9,6 +9,8 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { DurationPipe } from './duration.pipe';
 import { ToolboxComponent } from './toolbox/toolbox.component';
 import { RouterModule } from '../../../node_modules/@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   imports: [
@@ -33,6 +35,13 @@ import { RouterModule } from '../../../node_modules/@angular/router';
     BreadcrumbsComponent,
     ToolboxComponent,
     DurationPipe,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
   ]
 })
 export class SharedModule { }

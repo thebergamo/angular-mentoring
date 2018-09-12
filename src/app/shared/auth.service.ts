@@ -45,4 +45,8 @@ export class AuthService {
   setRedirectUrl(url: string): void {
     this.redirectUrl = url;
   }
+
+  getToken(): string {
+    return this.storageService.getItem('token');
+  }
 }
