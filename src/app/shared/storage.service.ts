@@ -8,19 +8,12 @@ export class StorageService {
 
   constructor() { }
 
-  addItem(key: string, item: any): void {
-    const value = JSON.stringify(item);
+  addItem(key: string, value: string): void {
     this.localStorage.setItem(key, value);
   }
 
-  getItem(key: string): any {
-    const item = this.localStorage.getItem(key);
-
-    console.log({ key, item });
-
-    if (!item) { return; }
-
-    return JSON.parse(item);
+  getItem(key: string): string {
+    return this.localStorage.getItem(key);
   }
 
   removeItem(key: string): void {
