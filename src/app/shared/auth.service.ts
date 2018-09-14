@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
   public redirectUrl = '';
+  public userInfo: User;
 
   constructor(
     private storageService: StorageService,
@@ -48,22 +49,24 @@ export class AuthService {
   }
 
   getUserInfo(): Observable<User> {
-    if (this.getToken()) {
+    if (this.getToken() && !this.userInfo) {
       return this
         .apiService
         .read('auth', 'userInfo')
         .pipe(
-          map((userInfo: any) =>
-            new UserModel({
+          map((userInfo: any) => {
+            this.userInfo = new UserModel({
               id: userInfo.id,
               firstName: userInfo.name.first,
               lastName: userInfo.name.last
-            })
-          ),
+            });
+
+            return this.userInfo;
+          }),
         );
     }
 
-    return of();
+    return of(this.userInfo);
   }
 
   getRedirectUrl(): string {

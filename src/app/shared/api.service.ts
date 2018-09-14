@@ -41,15 +41,15 @@ export class ApiService {
       );
     }
 
-  public update<T>(uri: string, id: string, payload: any): Observable<T> {
-    return this.http.put<T>(`${this.baseUrl}/${uri}`, payload)
+  public update<T>(uri: string, id: number, payload: any): Observable<T> {
+    return this.http.put<T>(`${this.baseUrl}/${uri}/${id}`, payload)
       .pipe(
         catchError(this.handleError<T>(`update: ${uri} - id: ${id}`))
       );
   }
 
-  public destroy<T>(uri: string, id: string): Observable<{}> {
-    return this.http.delete(`${this.baseUrl}/${uri}`)
+  public destroy<T>(uri: string, id: number): Observable<{}> {
+    return this.http.delete(`${this.baseUrl}/${uri}/${id}`)
       .pipe(
         catchError(this.handleError(`delte: ${uri} - id: ${id}`))
       );

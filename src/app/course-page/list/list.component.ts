@@ -44,7 +44,7 @@ export class ListComponent implements OnInit {
       this.courseService.remove(id);
     }
 
-    this.getCourses();
+    this.getCourses({ page: 0 });
   }
 
   onSearchCourse(textFragment: string): void {

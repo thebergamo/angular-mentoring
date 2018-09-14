@@ -36,8 +36,12 @@ export class CourseAddPageComponent implements OnInit, OnDestroy {
     this.data$.unsubscribe();
   }
 
-  onSaveClick(course: Course): void {
-    this.courseService.create(course);
+  onSaveClick(course: Course) {
+    if (this.course && this.course.id) {
+      this.courseService.update(this.course.id, course);
+    } else {
+      this.courseService.create(course);
+    }
     this.router.navigate(['/courses']);
   }
 

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import moment from 'moment/src/moment';
 
-import { COURSES } from './courses.mock';
 import { Course } from './course.interface';
 import { ApiService } from './api.service';
 import CourseModel from './course.model';
 import { map } from 'rxjs/operators';
 import { PagingOptions } from './paging-options';
 import { environment } from '../../environments/environment';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,19 +18,34 @@ export class CourseService {
 
   constructor(
     private apiService: ApiService,
-  ) { }
+    private authService: AuthService,
+    ) { }
 
-  convertToCourse(rawCourse: any): Course {
+  transformToCourse(rawCourse: any): Course {
     return new CourseModel({
       id: rawCourse.id,
       title: rawCourse.name,
       description: rawCourse.description,
-      creation: rawCourse.date,
+      creation: moment(rawCourse.date).format('YYYY-MM-DD'),
       topRated: rawCourse.isTopRated,
+      duration: rawCourse.length,
     });
   }
+
+  transformFromCourse(course: Course, userInfo: object): object {
+    return {
+      id: course.id,
+      name: course.title,
+      description: course.description,
+      isTopRated: course.topRated,
+      date: moment(course.creation).toDate(),
+      length: course.duration,
+      authors: [userInfo]
+    };
+  }
+
   convertToCourses(rawCourses: any): Course[] {
-    return rawCourses.map(this.convertToCourse);
+    return rawCourses.map(this.transformToCourse);
   }
 
   getList(queryString?: PagingOptions): Observable<Course[]> {
@@ -53,30 +69,36 @@ export class CourseService {
       .apiService
       .read('courses', id)
       .pipe(
-        map(this.convertToCourse)
+        map(this.transformToCourse)
       );
   }
 
-  create(course: Course): void {
-    this.courses = [...this.courses, course];
+  async create(course: Course) {
+    const userInfo = await this.authService.getUserInfo().toPromise();
+    const objCourse = this.transformFromCourse(course, userInfo);
+
+    console.log({ objCourse });
+    this
+      .apiService
+      .create('courses', objCourse)
+      .subscribe();
   }
 
-  update(id: number, course: Course): void {
-    // const courses = this.getList();
+  async update(id: number, course: Course) {
+    const userInfo = await this.authService.getUserInfo().toPromise();
+    const objCourse = this.transformFromCourse(course, userInfo);
 
-    // this.courses = courses.map((c: Course) => {
-    //   if (c.id === id) {
-    //     return course;
-    //   }
-
-    //   return c;
-    // });
+    this
+      .apiService
+      .update('courses', id, objCourse)
+      .subscribe();
   }
 
   remove(id: number): void {
-    // const courses = this.getList();
-
-    // this.courses = courses.filter((course: Course) => course.id !== id);
+    this
+      .apiService
+      .destroy('courses', id)
+      .subscribe();
   }
 
 
