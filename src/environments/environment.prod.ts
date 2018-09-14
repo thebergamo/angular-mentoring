@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:3004/'
+  apiUrl: 'http://localhost:3004',
+  defaultListingCount: 5,
 };

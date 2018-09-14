@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { HeaderComponent } from './header/header.component';
@@ -11,11 +12,13 @@ import { ToolboxComponent } from './toolbox/toolbox.component';
 import { RouterModule } from '../../../node_modules/@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
     FontAwesomeModule,
     RouterModule,
   ],
@@ -25,6 +28,7 @@ import { AuthInterceptor } from './auth.interceptor';
     BreadcrumbsComponent,
     ToolboxComponent,
     DurationPipe,
+    AlertComponent,
   ],
   exports: [
     CommonModule,
@@ -34,6 +38,7 @@ import { AuthInterceptor } from './auth.interceptor';
     FooterComponent,
     BreadcrumbsComponent,
     ToolboxComponent,
+    AlertComponent,
     DurationPipe,
   ],
   providers: [

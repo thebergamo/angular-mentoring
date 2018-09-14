@@ -23,8 +23,14 @@
       type="button"
       class="btn btn-outline-primary btn-l list__btn-load-more"
       (click)="onLoadMoreClick()"
+      *ngIf="!endList"
     >
       Load More Courses
     </button>
+    <p
+      *ngIf="endList"
+    >
+      You reach the end of the list!
+    </p>
   </section>
 </section>

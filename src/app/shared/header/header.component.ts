@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { filter } from 'rxjs/operators';
 import { User } from '../user.interface';
 import { AuthService } from '../auth.service';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,12 +14,26 @@ export class HeaderComponent implements OnInit {
 
   onLogoutClick(): void {
     this.authService.logout();
+    this.user = null;
   }
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    ) {}
 
   ngOnInit() {
-    this.user = this.authService.getUserInfo();
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this
+          .authService
+          .getUserInfo()
+          .subscribe(
+            (user: User) => this.user = user,
+            console.error,
+          );
+      });
   }
 
 }
