@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -13,11 +13,13 @@ import { RouterModule } from '../../../node_modules/@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 import { AlertComponent } from './alert/alert.component';
+import { LoaderOverlayComponent } from './loader-overlay/loader-overlay.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     FontAwesomeModule,
     RouterModule,
@@ -29,6 +31,7 @@ import { AlertComponent } from './alert/alert.component';
     ToolboxComponent,
     DurationPipe,
     AlertComponent,
+    LoaderOverlayComponent,
   ],
   exports: [
     CommonModule,
@@ -39,6 +42,7 @@ import { AlertComponent } from './alert/alert.component';
     BreadcrumbsComponent,
     ToolboxComponent,
     AlertComponent,
+    LoaderOverlayComponent,
     DurationPipe,
   ],
   providers: [

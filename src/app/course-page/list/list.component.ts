@@ -12,7 +12,6 @@ import { PagingOptions } from '../../shared/paging-options';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  public allCourses: Course[] = [];
   public filteredCourses: Course[] = [];
   public query = '';
   public page = 0;
@@ -24,7 +23,7 @@ export class ListComponent implements OnInit {
       .getList(queryOptions)
       .subscribe(
         (courses) => {
-          if (courses.length === 0) {
+          if (queryOptions.page !== 0 && courses.length === 0) {
             this.endList = true;
             return;
           }

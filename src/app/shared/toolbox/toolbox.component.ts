@@ -1,4 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { debounceTime, switchMap, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-toolbox',
@@ -6,19 +9,23 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./toolbox.component.css']
 })
 export class ToolboxComponent implements OnInit {
-  @Input()
-  query = '';
-
   @Output()
   public search: EventEmitter<string> = new EventEmitter<string>();
 
-  onSearchClick() {
-    this.search.emit(this.query);
+  public query: FormControl = new FormControl('');
+
+  handleChange(e) {
+    console.log('change', e);
   }
 
   constructor() { }
 
   ngOnInit() {
+    this.query.valueChanges
+      .pipe(
+        filter(value => !value || value.length >= 3),
+        debounceTime(200)
+      )
+      .subscribe((value) => this.search.emit(value));
   }
-
 }

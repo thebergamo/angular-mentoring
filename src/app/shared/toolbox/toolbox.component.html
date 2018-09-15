@@ -4,16 +4,9 @@
       <input
         type="text"
         placeholder="Search for courses"
-        [(ngModel)]="query"
         name="searchTerm"
+        [formControl]="query"
       />
-      <button
-        type="button"
-        class="btn btn-primary btn-sm toolbox__search-btn"
-        (click)="onSearchClick()"
-      >
-        Search
-      </button>
     </fieldset>
   </form>
 
