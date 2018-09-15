@@ -77,6 +77,8 @@ export class ApiService {
     return (error: any): Observable<T> => {
       console.warn(`Operation failed: ${operation}`);
       console.error(error);
+
+      this.loaderService.hideLoader();
       if (!result) {
         throw new Error('Operation failed');
       }

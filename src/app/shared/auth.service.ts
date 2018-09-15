@@ -6,7 +6,10 @@ import { Router } from '@angular/router';
 import { ApiService } from './api.service';
 import { AlertService } from './alert.service';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import * as fromUser from '../reducers/user';
+import { Login } from '../actions/user.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -20,19 +23,26 @@ export class AuthService {
     private router: Router,
     private apiService: ApiService,
     private alertService: AlertService,
+    private store: Store<fromUser.State>
   ) { }
 
-  login(login: string, password: string): void {
-    this
+  login(login: string, password: string, redirectUrl: string): Observable<string  | null> {
+    return this
       .apiService
       .create<{ token: string }>('auth/login', { login, password })
-      .subscribe(
-        ({ token } = { token: null }) => {
+      .pipe(
+        map(({ token }) => {
           this.storageService.addItem('token', token);
 
-          this.router.navigate([this.redirectUrl]);
-        },
-        () => this.alertService.error('Email or Password do not match with our records. Please check it and try again.'),
+          this.router.navigate([redirectUrl || '']);
+
+          return token;
+        }),
+        catchError((err): Observable<string> => {
+          console.error(err);
+          this.alertService.error('Email or Password do not match with our records. Please check it and try again.')
+          return of();
+        }),
       );
 
   }
