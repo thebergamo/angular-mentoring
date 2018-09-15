@@ -77,7 +77,6 @@ export class CourseService {
     const userInfo = await this.authService.getUserInfo().toPromise();
     const objCourse = this.transformFromCourse(course, userInfo);
 
-    console.log({ objCourse });
     this
       .apiService
       .create('courses', objCourse)

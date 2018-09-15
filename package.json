@@ -23,8 +23,12 @@
     "@fortawesome/angular-fontawesome": "^0.1.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.2",
     "@fortawesome/free-solid-svg-icons": "^5.2.0",
+    "@ngrx/core": "^1.2.0",
+    "@ngrx/store": "^6.1.0",
+    "@ngrx/store-devtools": "^6.1.0",
     "core-js": "^2.5.4",
     "moment": "^2.22.2",
+    "ngrx-store-freeze": "^0.2.4",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
