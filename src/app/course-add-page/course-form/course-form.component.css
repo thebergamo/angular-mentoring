@@ -5,3 +5,7 @@
 .course-form--actions .btn {
   margin-right: 8px;
 }
+
+.course-form--error {
+  display: block;
+}

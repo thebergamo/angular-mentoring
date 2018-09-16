@@ -4,10 +4,12 @@ import { CourseAddPageComponent } from './course-add-page.component';
 import { CourseFormComponent } from './course-form/course-form.component';
 import { FormFieldsModule } from './form-fields/form-fields.module';
 import { CourseDetailResolverService } from './course-detail-resolver.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     FormFieldsModule,
   ],
   declarations: [
